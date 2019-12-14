@@ -147,6 +147,10 @@ export default {
         JSON.stringify(data)
       );
       this.city.show = false;
+      // 获取热映影片
+      this.listHotFilm();
+      // 获取待映影片
+      this.listComingFilm();
     },
 
     // 获取热映影片
