@@ -10,7 +10,7 @@
           <span class="type-span">{{item.dataStatus | dataStatusFormat}}</span>
         </div>
         <div @click="goOrderDetails">
-          <figure class="move-item-img">
+          <figure class="move-item-img" v-if="item.film">
             <img :src="item.film.poster" />
           </figure>
           <div class="move-item-r">
@@ -23,7 +23,7 @@
             <p class="unoverflow">
               <span class="move-type">{{item.showType | showVersionFormat}}</span>
             </p>
-            <p class="unoverflow">{{item.film.actor}}</p>
+            <p class="unoverflow" v-if="item.film">{{item.film.actor}}</p>
             <p class="unoverflow">{{item.showTime | dateFormat}}</p>
             <p class="unoverflow">
               {{item.cinemaHallName}} {{item.rowCol}}
