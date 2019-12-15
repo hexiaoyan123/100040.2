@@ -47,11 +47,24 @@
         </van-row>
         <em class="arrow-top"></em>
       </div>
-      <div style="z-index: 2;" v-if="filmDisplayMode == 'img'">
+      <div style="z-index: 2; banner-div" v-if="filmDisplayMode == 'img'">
         <span
           class="fd-banner-item"
           :class="{'fd-banner-h': film.id == val.id}"
+          v-if="film.id ==  val.id"
           v-for="val in cinemaShowList"
+          :key="val.id"
+          @click="clickFilm(val)"
+        >
+          <i class="img">
+            <img :src="val.poster" style="width: 100%;height: 100%;" />
+          </i>
+          <em class="arrow-top"></em>
+        </span>
+        <span
+          class="fd-banner-item"
+          v-for="val in cinemaShowList"
+          v-if="film.id !== val.id"
           :key="val.id"
           @click="clickFilm(val)"
         >
@@ -153,6 +166,9 @@ export default {
     }
 
     this.getCity();
+    //let selectDiv = document.querySelector(".fd-banner-h").offsetWidth;
+    // let bannerDiv = document.querySelector(".banner-div").offsetWidth;
+    // console.log("bannerDiv");
   },
   methods: {
     // 返回上一页
@@ -196,6 +212,7 @@ export default {
                 } else {
                   vm.clickFilm(vm.cinemaShowList[0]);
                 }
+                //let selectDiv = document.querySelector(".fd-banner-h")
               }
             }
           } else {
